@@ -47,9 +47,10 @@ function processQueue(): void {
 }
 
 export function initializeWebSocket(server: HttpServer): SocketIOServer {
+  const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
   io = new SocketIOServer(server, {
     cors: {
-      origin: 'http://localhost:3000',
+      origin: corsOrigin,
       methods: ['GET', 'POST'],
     },
   });

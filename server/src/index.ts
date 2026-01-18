@@ -8,11 +8,11 @@ import { initializeWebSocket } from './websocket/socketHandler.js';
 
 const app = express();
 const server = createServer(app);
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
-// Middleware
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: CORS_ORIGIN,
   credentials: true,
 }));
 app.use(express.json());
